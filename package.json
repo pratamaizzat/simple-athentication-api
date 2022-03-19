@@ -4,7 +4,9 @@
   "description": "simple authentication api image",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "ilfat izzat pratama",
   "license": "MIT",
