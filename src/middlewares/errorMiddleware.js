@@ -1,3 +1,4 @@
+const ErrorHandlerException = require('../utils/exception')
 /**
  *
  * @param {import('express').Request} req
@@ -5,7 +6,11 @@
  * @param {import('express').NextFunction} next
  */
 const notFoundPage = (req, res, next) => {
-  const err = new Error(`Not found page -- ${req.originalUrl}`)
+  const err = new ErrorHandlerException(
+    404,
+    'Not Found',
+    `Not found page -- ${req.originalUrl}`
+  )
   res.status(404)
   next(err)
 }
@@ -23,9 +28,10 @@ const errorHandler = (error, req, res, next) => {
   res.status(statusCode)
   res.json({
     status: statusCode,
+    statusText: error.statusText,
     message: error.message,
     // stack: process.env.NODE_ENV === 'production' ? '🎂' : error.stack,
-    errors: error.errors || undefined,
+    meta: error.meta || undefined,
   })
 }
 
