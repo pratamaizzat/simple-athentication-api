@@ -6,14 +6,20 @@
   "scripts": {
     "test": "jest",
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "migrate:make": "knex migrate:make",
+    "seed:make": "knex seed:make",
+    "seed": "knex seed:run"
   },
   "author": "ilfat izzat pratama",
   "license": "MIT",
   "dependencies": {
+    "@faker-js/faker": "^6.0.0",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "faker": "^6.6.6",
     "knex": "^1.0.4",
     "objection": "^3.0.1",
     "pg": "^8.7.3"

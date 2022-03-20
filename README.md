@@ -7,14 +7,28 @@ Created At - datetime
 Updated At - datetime
 Deleted At - datetime
 
-* [ ] Create User Entity
-* [ ] Seed User Entity
+* [x] Create Role Entity
+* [x] Create User Entity
+* [x] Seed Role Entity
+* [x] Seed User Entity
 
 # API Endpoint
 
+* [ ] Role
+  * [ ] Get All Roles
+  * [ ] Get One Role
+  * [ ] Update Role
+  * [ ] Create Role
+  * [ ] Delete Role
 * [ ] User
-  * [ ] Login
+  * [ ] Login 
   * [ ] Register
   * [ ] Logout
   * [ ] Get New Token
   * [ ] Get Authenticate current User
+  * [ ] User Confirm Email
+  * [ ] User Forgot Password
+  * [ ] User Change Password
+  * [ ] Get All Users
+  * [ ] Get One User
+  * [ ] Update User Role
