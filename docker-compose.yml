@@ -2,7 +2,8 @@ version: '3.1'
 services:
   db:
     image: postgres:14.2-alpine
-    restart: always
+    restart: unless-stopped
+    container_name: simpleauth_db
     volumes:
       - ./docker-compose/postgres:/var/lib/postgresql/data
       - ./pg-init-scripts:/docker-entrypoint-initdb.d
@@ -12,10 +13,31 @@ services:
       - POSTGRES_MULTIPLE_DATABASES=simple_auth,simple_auth_test
     ports:
       - 5432:5432
+    networks:
+      - simpleauth
+
+  redis:
+    image: redis:alpine
+    container_name: simpleauth_redis
+    command: redis-server /usr/local/etc/redis/redis.conf --requirepass ${REDIS_PASSWORD}
+    ports:
+      - 6379:6379
+    volumes:
+      - ./docker-compose/redis/redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - simpleauth
+
   adminer:
     depends_on:
       - db
     image: adminer
-    restart: always
+    container_name: simpleauth_adminer
+    restart: unless-stopped
     ports:
       - 8080:8080
+    networks:
+      - simpleauth
+
+networks:
+  simpleauth:
+    driver: bridge
