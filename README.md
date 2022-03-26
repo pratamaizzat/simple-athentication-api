@@ -9,8 +9,10 @@ Deleted At - datetime
 
 * [x] Create Role Entity
 * [x] Create User Entity
+* [ ] Create Permisson Entity
 * [x] Seed Role Entity
 * [x] Seed User Entity
+* [ ] Seed Permission Entity
 
 # API Endpoint
 
